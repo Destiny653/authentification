@@ -1,0 +1,86 @@
+.dash-section {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 20px 10px;
+    color: #fff;
+    background-color: #0d0e13e8;
+}
+.nav-bar{
+    box-sizing: 
+    border-box;
+    padding: 3px 30px;
+    width: 100%; 
+    background-color: rgba(255, 208, 0, 0.664);
+    color: #fff;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 27px;
+}
+
+/* 
+========================================
+Login
+========================================
+ */
+
+.form-log {
+    background-color: #0d0e13e8;
+    box-sizing: border-box;
+    padding: 20px 20px;
+    width: 300px;
+    border-radius: 10px;
+}
+
+input {
+    padding: 8px 20px;
+    width: 100%;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    cursor: pointer;
+}
+
+/* 
+========================================
+Register
+========================================
+*/
+
+.form-reg {
+    background-color: #0d0e13e8;
+    border: 1px solid #6b6b6b;
+    padding: 30px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.form-reg label {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-reg input {
+    width: 300px;
+    outline: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+}
+
+.form-reg span {
+    font-weight: 600;
+    color: #fff;
+}
+
+.form-reg button {
+    width: 100px;
+}

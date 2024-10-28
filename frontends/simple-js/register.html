@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <title>Dashboard page</title>
+</head>
+
+<body>
+    <nav class="nav-bar">
+        <li>Register</li>
+    </nav>
+    <div style="width: 100%; height: 92.8vh; display: flex; justify-content: center; align-items: center;">
+        <sectinon class="dash-section">
+        <div>
+            <p style="font-size: 20px;">A combination of front-end and back-end master piece.</p>
+        </div>
+        <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <sectin style="display: flex;">
+                <div style="background-color: rgba(0, 0, 0, 0.664); height: 90px; width: 90px;"></div>
+                <div style="background-color: rgba(255, 166, 0, 0.795); height: 90px; width: 90px;"></div>
+            </sectin>
+            <sectin style="display: flex;">
+                <div style="background-color: rgba(255, 166, 0, 0.795); height: 90px; width: 90px;"></div>
+                <div style="background-color: rgba(0, 0, 0, 0.664); height: 90px; width: 90px;"></div>
+            </sectin> 
+        </div>
+        <div> 
+            <p>Create an account.</p>
+        </div>
+        </sectinon>
+        <sectinon 
+        style="
+        width: 80%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        ">
+        <form class="form-reg" id="form" style="display: flex; flex-direction: column; gap: 20px;" 
+        action="http://localhost:3000/api/auth/register" method="POST">
+            <h1 style="font-size: 25px; color: #fff;">Register</h1>
+            <div style="display: flex; width: 100%; gap: 20px;">
+                <label for="first-name">
+                    <span>First name</span>
+                    <input type="text" id="first-name" name="firstName" placeholder="Enter first name">
+                </label>
+                <label for="last-name">
+                    <span>Last name</span>
+                    <input type="text" id="last-name" name="lastName" placeholder="Enter last name">
+                </label>
+            </div>
+            <div style="display: flex; width: 100%; gap: 20px;">
+                <label for="Username">
+                    <span>Username</span>
+                    <input type="text" id="username" name="username" placeholder="Enter user name">
+                </label>
+                <label for="email">
+                    <span>Email</span>
+                    <input type="emil" id="email" name="email"  placeholder="email@gmail.com">
+                </label>
+            </div>
+            <div style="display: flex; width: 100%; gap: 20px;">
+                <label for="password">
+                    <span>Password</span>
+                    <input type="password" id="password" name="password" placeholder="********">
+                </label>
+                <label for="newPassword">
+                    <span>Re-enter password</span>
+                    <input type="password" id="new-password"  name="newPassword" placeholder="********">
+                </label>
+            </div>
+            <div style="display: flex; gap: 40px;">
+                <button type="submit">Register</button>
+                <p style="color: blue;">Already have an account?
+                    <a href="/frontends/simple-js/login.html">Login</a>
+                </p> 
+            </div>
+        </form>
+        </sectinon>
+    </div>
+
+    <script>
+        const form = document.querySelector('#form') 
+        // const email = document.getElementById('email').value.trim();
+            form.addEventListener('submit', async (e)=>{
+                const formData = new FormData(form) 
+                const data = Object.fromEntries(formData.entries());
+                // const data = {
+                //     first_name: formData.get('firstName'),
+                //     last_name: formData.get('lastName'),
+                //     username: formData.get('username'),
+                //     email: formData.get('email'),
+                //     password: formData.get('password'),
+                //     confirm_password: formData.get('newPassword')
+                // }  
+
+                try {
+                    const request = await fetch(form.action, {
+                        method: form.method,
+                        headers:{
+                              'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    })
+
+                    const response = await request.json();
+                    console.log('Response log:', response);
+                    if(request.ok){
+                        alert('Registration was successful.')
+                        window.location.href = 'http://127.0.0.1:5501/frontends/simple-js/login.html';
+                    }else{
+                        alert(response.message);
+                    }
+
+                } catch (error) { 
+                    console.log('Error: ', error);
+                    
+                }
+            })
+             
+    </script>
+</body>
+
+
+</html>
