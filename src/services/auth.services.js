@@ -63,17 +63,13 @@ const register = async (data) => {
 const login = async (user, password) => {
     const compare = await comparePasswords(password, user.password)
     if (compare) {
+        const token = jwt.sign({ id: user._id }, 'secret_key', { expiresIn: '1h' });
         return {
             error: false,
-            message: 'Login successful',
-            user
+            message: "Credentials validated",
+            user,
+            token: token
         }
-    }
-    const token = jwt.sign({ id: user._id }, 'secret_key', { expiresIn: '1h' });
-    return {
-        error: false,
-        message: 'Invalid credentials',
-        token: token
     }
 }
 const email = async (data) => {

@@ -89,8 +89,11 @@
                     if(request.ok){
                         alert('Login successful');
                         const token = response.token;
-                        localStorage.setItem('token', token);
-                        window.location.href = 'http://127.0.0.1:5501/frontends/simple-js/dashboard.html';
+                        if(token){
+                            localStorage.setItem('token', token);
+                            window.location.href = 'http://127.0.0.1:5501/frontends/simple-js/dashboard.html';
+                            return;
+                        }
                     }else{
                         alert(response.message);
                     }
