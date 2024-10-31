@@ -87,18 +87,47 @@
 
     <script>
         const form = document.querySelector('#form') 
-        // const email = document.getElementById('email').value.trim();
+        const email = document.getElementById('email').value.trim();
             form.addEventListener('submit', async (e)=>{
+                e.preventDefault();
+                
+                // Get the form data using FormData API and convert it to an object.
+                // This approach is more secure and efficient than using the spread operator.
+                // In this case, we're creating a new object with the same properties as the form data.
+                // This way, we're not directly modifying the form data object.
+
+                const formData1 = Object.fromEntries(new FormData(form));
+                console.log("The form data2: ", formData1);
+                
+                // This approach is less secure and efficient than using the spread operator.
+                // In this case, we're directly modifying the form data object.
+
+                const formData2 = {...new FormData(form)};
+                console.log("The form data2: ", formData2);
+                
+                // This approach is less secure and efficient than using the spread operator.
+                // In this case, we're creating a new array from the form data entries.
+
+                const formData3 = Array.from(new FormData(form));
+                console.log("The form data3: ", formData3);
+               
                 const formData = new FormData(form) 
-                const data = Object.fromEntries(formData.entries());
-                // const data = {
-                //     first_name: formData.get('firstName'),
-                //     last_name: formData.get('lastName'),
-                //     username: formData.get('username'),
-                //     email: formData.get('email'),
-                //     password: formData.get('password'),
-                //     confirm_password: formData.get('newPassword')
-                // }  
+                // for( let [key, value] of 
+                //     formData.entries()
+                // ){
+                //     console.log("The field keys and values here: ",key, value);
+                    
+                // }
+                // const data = Object.fromEntries(formData.entries());
+                const data = {
+                    first_name: formData.get('firstName'),
+                    last_name: formData.get('lastName'),
+                    username: formData.get('username'),
+                    email: formData.get('email'),
+                    password: formData.get('password'),
+                    confirm_password: formData.get('newPassword')
+                }  
+                console.log("The form data: ", data);
 
                 try {
                     const request = await fetch(form.action, {

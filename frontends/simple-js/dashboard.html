@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/reset.css">
     <title>Dashboard page</title>
 </head>
@@ -15,25 +16,24 @@
     </nav>
     <div style="width: 100%; height: 92.8vh; display: flex; justify-content: center; align-items: center;">
         <sectinon class="dash-section">
-        <div>
-            <p style="font-size: 20px;">A combination of front-end and back-end master piece.</p>
-        </div>
-        <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
-            <sectin style="display: flex;">
-                <div style="background-color: rgba(0, 0, 0, 0.664); height: 90px; width: 90px;"></div>
-                <div style="background-color: rgba(255, 166, 0, 0.795); height: 90px; width: 90px;"></div>
-            </sectin>
-            <sectin style="display: flex;">
-                <div style="background-color: rgba(255, 166, 0, 0.795); height: 90px; width: 90px;"></div>
-                <div style="background-color: rgba(0, 0, 0, 0.664); height: 90px; width: 90px;"></div>
-            </sectin> 
-        </div>
-        <div>
-            <button id="logout">Logout</button>
-        </div>
+            <div>
+                <p style="font-size: 20px;">A combination of front-end and back-end master piece.</p>
+            </div>
+            <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+                <sectin style="display: flex;">
+                    <div style="background-color: rgba(0, 0, 0, 0.664); height: 90px; width: 90px;"></div>
+                    <div style="background-color: rgba(255, 166, 0, 0.795); height: 90px; width: 90px;"></div>
+                </sectin>
+                <sectin style="display: flex;">
+                    <div style="background-color: rgba(255, 166, 0, 0.795); height: 90px; width: 90px;"></div>
+                    <div style="background-color: rgba(0, 0, 0, 0.664); height: 90px; width: 90px;"></div>
+                </sectin>
+            </div>
+            <div>
+                <button id="logout">Logout</button>
+            </div>
         </sectinon>
-        <sectinon 
-        style="
+        <sectinon style="
         width: 80%;
         height: 100%;
         display: flex;
@@ -42,8 +42,7 @@
         justify-content: center;
         align-items: center;
         ">
-        <div 
-        style="
+            <div style="
         display: flex;
         justify-content: center;
         align-items: center;
@@ -53,28 +52,27 @@
         border-radius: 100%;
         background-color: #0e77b46c;
         color: #fff;
-        "
-        >
-            M
-        </div>
-        <p style="text-align: center;">Hello user</p>
+        ">
+                M
+            </div>
+            <p style="text-align: center;">Hello user</p>
         </sectinon>
     </div>
 
     <script>
         const token = localStorage.getItem('token');
-        if(!token){
-            window.location.href = 'http://127.0.0.1:5500/frontends/simple-js/login.html'
-        }else{
+        if (!token) {
+            window.location.href = 'http://127.0.0.1:5501/frontends/simple-js/login.html'
+        } else {
             console.log("Token:", token);
-            
+
         }
-        document.addEventListener('DOMContentLoaded', ()=>{
+        document.addEventListener('DOMContentLoaded', () => {
             const logoutBtn = document.getElementById('logout');
-            if(logoutBtn){
-                logoutBtn.addEventListener('click', ()=>{
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', () => {
                     localStorage.removeItem('token');
-                    window.location.href =  'http://127.0.0.1:5500/frontends/simple-js/login.html'
+                    window.location.href = 'http://127.0.0.1:5501/frontends/simple-js/login.html'
                 })
             }
         })

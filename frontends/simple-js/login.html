@@ -57,7 +57,7 @@
                     <a href="/frontends/simple-js/register.html">Register</a>
                 </p>
                 <p style="color: red; cursor: pointer;">
-                   <a href="/frontends/simple-js/updatepassword.html" onClick>Forgot password</a> 
+                   <a href="/frontends/simple-js/verifyemail.html" onClick>Forgot password</a> 
                 </p>
             </form>
         </sectinon>
@@ -68,6 +68,7 @@
         if(form){
 
             form.addEventListener('submit', async (e) => {  
+                e.preventDefault();
                 const formData = new FormData(form)
                 const data = {
                     "email": formData.get('email'),
